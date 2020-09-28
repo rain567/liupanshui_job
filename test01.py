@@ -25,12 +25,12 @@ plotNum 参数指定创建的 Axes 对象所在的区域
 如果 numRows, numCols 和 plotNum 这三个数都小于 10 的话, 可以把它们缩写为一个整数, 例如 subplot(323) 和 subplot(3,2,3) 是相同的.
 """
 # plt.imshow()
-plt.imshow
 # 获取可视化数据
 for i in range(9):
     plt.subplot(3, 3, i+1)
     plt.imshow(X_train[i], cmap='gray', interpolation='none')
     plt.title("Class {}".format(y_train[i]))
+
 # MNIST数据标准化
 # 数据集是3维的向量（instance length,width,height)
 # 为了完成后期的归一化处理，所以必须将X_trian、X_test数据转换成浮点型数据
