@@ -1,11 +1,11 @@
 import numpy
 import random
 from matplotlib import pyplot as plt
-from keras.datasets import mnist # 从keras的datasets中导入mnist数据集
-from keras.models import Sequential # 导入Sequential模型
-from keras.layers import Dense # 全连接层用Dense类
+from tensorflow.python.keras.datasets import mnist # 从keras的datasets中导入mnist数据集
+from tensorflow.python.keras.models import Sequential # 导入Sequential模型
+from tensorflow.python.keras.layers import Dense # 全连接层用Dense类
 from keras.layers import Dropout # 为输入数据施加Dropout。Dropout将在训练过程中每次更新参数时按一定概率（rate）随机断开输入神经元，Dropout层用于防止过拟合
-from keras.utils import np_utils # 导入np_utils是为了用one hot encoding方法将输出标签的向量（vector）转化为只在出
+from tensorflow.python.keras.utils import np_utils # 导入np_utils是为了用one hot encoding方法将输出标签的向量（vector）转化为只在出
 
 # 获取数据集MNIST
 # 将随机数产生器初始化为一个常量能让最终的结果是固定的。

@@ -1,23 +1,19 @@
-
 import numpy
-from keras.datasets import mnist
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import Dropout
-from keras.layers import Flatten
-from keras.layers.convolutional import Conv2D
-from keras.layers.convolutional import MaxPooling2D
-from keras.utils import np_utils
-from keras import backend as K
 
+from tensorflow.python.keras.datasets import mnist
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras.layers import Dropout, Flatten
+from tensorflow.python.keras.layers.convolutional import Conv2D, MaxPooling2D
+from tensorflow.python.keras.utils import np_utils
+from keras import backend as k
 
-# K.set_image_dim_ordering("tf")
-# K.set_image_dim_ordering('th')
-# K.set_image_data_format('channels_first')
-# K.image_data_format() == 'channels_last'
-K.image_data_format() == 'channels_first'
-# K.image_data_format() == "channels_first"
-
+# k.set_image_dim_ordering("tf")
+# k.set_image_dim_ordering('th')
+# k.set_image_data_format('channels_first')
+k.set_image_data_format('channels_last')
+# k.image_data_format() == 'channels_last'
+# k.image_data_format() == "channels_first"
 
 seed = 7
 numpy.random.seed(seed)
@@ -25,8 +21,8 @@ numpy.random.seed(seed)
 # load data
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 # reshape to be [samples][pixels][width][height]
-X_train = X_train.reshape(X_train.shape[0], 1, 28, 28).astype('float32')
-X_test = X_test.reshape(X_test.shape[0], 1, 28, 28).astype('float32')
+X_train = X_train.reshape(X_train.shape[0], 28, 28, 1).astype('float32')
+X_test = X_test.reshape(X_test.shape[0], 28, 28, 1).astype('float32')
 
 X_train = X_train / 255
 X_test = X_test / 255
@@ -38,7 +34,7 @@ num_classes = y_test.shape[1]
 def baseline_model():
     # create model
     model = Sequential()
-    model.add(Conv2D(32, (5, 5), input_shape=(1, 28, 28), activation='relu'))
+    model.add(Conv2D(32, (5, 5), input_shape=(28, 28, 1), activation='relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.2))
     model.add(Flatten())
@@ -47,7 +43,6 @@ def baseline_model():
     # Compile model
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
-
 
 # build the model
 model = baseline_model()
