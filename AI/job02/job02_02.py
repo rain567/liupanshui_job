@@ -1,9 +1,9 @@
 import numpy  # 导入数据库
-from keras.datasets import mnist
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.layers import Dropout
-from keras.utils import np_utils
+from tensorflow.python.keras.datasets import mnist
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
+# from tensorflow.python.keras.layers import Dropout
+from tensorflow.python.keras.utils import np_utils
 
 seed = 7  # 设置随机种子
 numpy.random.seed(seed)

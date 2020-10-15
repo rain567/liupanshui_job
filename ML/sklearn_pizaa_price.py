@@ -5,7 +5,7 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 # 读取数据
-pizza = pd.read_csv("pizza_multi.csv", index_col='Id')
+pizza = pd.read_csv("pizza_mulpti.csv", index_col='Id')
 X = pizza.iloc[:-5, :2].values
 y = pizza.iloc[:-5, 2].values.reshape((-1, 1))
 X_test = pizza.iloc[-5:, :2].values
