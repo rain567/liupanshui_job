@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-#多元线性回归：手动实现通过分析披萨的直径、辅料数量与价格的线性关系，来预测披萨的价格
-#导入必要模块
+# 多元线性回归：手动实现通过分析披萨的直径、辅料数量与价格的线性关系，来预测披萨的价格
+# 导入必要模块
 import numpy as np
 import pandas as pd
 #加载数据
-pizza = pd.read_csv("pizza_multi.csv", index_col='Id')
+pizza = pd.read_csv("/ML/unit_3/pizza_multi.csv", index_col='Id')
 #将前五行数据作为测试集，其他为测试集
 X = pizza.iloc[:-5, :2].values
 y = pizza.iloc[:-5, 2].values.reshape((-1, 1))

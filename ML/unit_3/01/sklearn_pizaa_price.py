@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-#多元线性回归：使用sklear包通过分析披萨的直径、辅料数量与价格的线性关系，来预测披萨的价格
+# 多元线性回归：使用sklear包通过分析披萨的直径、辅料数量与价格的线性关系，来预测披萨的价格
 #导入必要模块
 #import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 # 读取数据
-pizza = pd.read_csv("pizza_mulpti.csv", index_col='Id')
+pizza = pd.read_csv("/ML/unit_3/pizza_multi.csv", index_col='Id')
 X = pizza.iloc[:-5, :2].values
 y = pizza.iloc[:-5, 2].values.reshape((-1, 1))
 X_test = pizza.iloc[-5:, :2].values
