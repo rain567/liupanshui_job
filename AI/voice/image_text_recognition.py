@@ -1,5 +1,5 @@
 from aip import AipOcr
-
+# 图片文字识别
 """ 你的 APPID AK SK """
 APP_ID = '22855479'
 API_KEY = 'dEbfdWGaDhu7yG4h07OMaSU3'
@@ -12,7 +12,7 @@ def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
 
-image = get_file_content('wm20.jpg')
+image = get_file_content('../../ML/unit_5/wm20.jpg')
 
 """ 调用通用文字识别, 图片参数为本地图片 """
 resp = client.basicGeneral(image);
