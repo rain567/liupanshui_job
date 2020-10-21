@@ -5,7 +5,6 @@
 survey = {'Tom': 'Java', 'Jerry': 'Python', 'Hal': 'C', 'Earl': 'GO'}
 names = ['Cain', 'Jerry', 'Rain', 'Tom', 'Pace']
 
-
 for name in names:
     if name in survey.keys():
         print('%s 感谢参与调查' % name)
