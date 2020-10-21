@@ -17,9 +17,10 @@ for user in new_users:
         continue
     print(user, '未被使用')
 
+current_user_lower = [current_user.lower() for current_user in current_users]
 print('\n（4）确保比较时不区分大小写，如果用户名“John”已被使用，应拒绝用户名“JOHN”。')
 for user in new_users:
-    if user.lower() in [current_user.lower() for current_user in current_users]:
+    if user.lower() in current_user_lower:
         print(user, '已经被使用, 需要输入用户名')
         continue
     print(user, '未被使用')
