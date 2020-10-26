@@ -14,15 +14,14 @@ def get_file_content(filePath):
         return fp.read()
 
 
-text = ''
-Doc = Document()
 for i in range(1, 5):
     image = get_file_content(str(i) + '.png')
     resp = client.basicGeneral(image);
     words = list(map(lambda record: record['words'], resp['words_result']))
     # print('words', words)
-    Doc.add_heading(','.join(words) + '\n')
+    print(','.join(words))
+    with open("test.txt", "w", encoding='utf-8') as f:
+        f.write(','.join(words) + '\n')
 
-Doc.save('python_img_to_text.docx')
 
 
