@@ -12,12 +12,13 @@ def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
 
-
+text = ''
 for i in range(1, 5):
     image = get_file_content(str(i) + '.png')
     resp = client.basicGeneral(image);
     words = list(map(lambda record: record['words'], resp['words_result']))
     # print('words', words)
-    print(','.join(words))
-    with open("test.txt", "w", encoding='utf-8') as f:
-        f.write(','.join(words) + '\n')
+    text += ','.join(words) + '\n'
+
+with open("test.txt", "w", encoding='utf-8') as f:
+        f.write(text)
