@@ -1,5 +1,4 @@
 from aip import AipOcr
-from docx import Document
 # 图片文字识别
 """ 你的 APPID AK SK """
 APP_ID = '22855479'
@@ -22,6 +21,3 @@ for i in range(1, 5):
     print(','.join(words))
     with open("test.txt", "w", encoding='utf-8') as f:
         f.write(','.join(words) + '\n')
-
-
-
