@@ -40,7 +40,7 @@ def result_show(filename, result):
         right_bottom = (left_top[0] + location['width'], left_top[1] + location['height'])
         cv2.rectangle(img, left_top, right_bottom, (226, 26, 25), 2)
         cv2.putText(img, beauty, (int(location['left']), (int(location['top'])) - 25), cv2.FONT_HERSHEY_COMPLEX, 1,
-                    (0, 200, 200), 2)
+                    (0, 200, 200), 1)
         cv2.putText(img, age, (int(location['left']), int(location['top'])), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 250, 50),
                     2)
     cv2.imshow("putText", img)
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     APP_ID = '22911430'
     API_KEY = 'kGehW01UFIUUHQf7ATMdPoFs'
     SECRET_KEY = 'aYBMR1TGxsymnoUe6PcYgnFIjc3tIZw2'
-    filename = 'img.jpg'
+    filename = '1.jpg'
     result = detection(APP_ID, API_KEY, SECRET_KEY, filename, 10)
     print(result)
     result_show(filename, result)
