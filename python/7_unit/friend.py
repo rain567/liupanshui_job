@@ -11,16 +11,15 @@ def show_friends(friend_list):
 
 
 def make_great(friend_list):
-    new_friend_list = []
-    for friend in friend_list:
-        new_friend_list.append(friend + '超棒')
-    return new_friend_list
+    for index in range(len(friend_list)):
+        friend_list[index] = friend_list[index] + '超棒'
+    return friend_list
 
 
 friends = ['tom', 'jerry', 'rain']
 show_friends(friends)
 # 添加字样并创建为新列表
-new_friends = make_great(friends)
+new_friends = make_great(friends.copy())
 show_friends(new_friends)
 
 
