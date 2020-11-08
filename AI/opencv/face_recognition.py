@@ -4,7 +4,6 @@
 # 利用baidu-aip库进行人脸识别
 import cv2
 import base64
-import matplotlib.pyplot as plt
 from aip import AipFace
 
 """读取图片"""
@@ -51,7 +50,7 @@ if __name__ == '__main__':
     APP_ID = '22911430'
     API_KEY = 'kGehW01UFIUUHQf7ATMdPoFs'
     SECRET_KEY = 'aYBMR1TGxsymnoUe6PcYgnFIjc3tIZw2'
-    filename = 'img.jpg'
+    filename = 'img.png'
     result = detection(APP_ID, API_KEY, SECRET_KEY, filename, 10)
     print(result)
     result_show(filename, result)

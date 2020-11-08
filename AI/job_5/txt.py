@@ -1,8 +1,4 @@
 # coding=utf-8
-import sys
-import json
-import base64
-import time
 from aip import AipNlp
 import os
 """ 你的 APPID AK SK """
@@ -30,6 +26,7 @@ def title_content():
         title.append(file[0])
         content.append(file[1:])
     return tag,title,content
+
 
 def data_process(title,content):
     result0 = []
