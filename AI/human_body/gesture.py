@@ -20,6 +20,6 @@ image = get_file_content('ok_img.jpg')
 """ 调用手势识别 """
 resp = client.gesture(image)
 if resp['result'] and resp['result'][0]['classname']:
-    print('识别成功，收拾：{}'.format(resp['result'][0]['classname']))
+    print('识别成功，手势：{}'.format(resp['result'][0]['classname']))
 else:
     print('识别失败')
