@@ -18,6 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ML/unit_4/4.2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ML/unit_3/02" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ML/unit_3/01" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/python/8_unit" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
