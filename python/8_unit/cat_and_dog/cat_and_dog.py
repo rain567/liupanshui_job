@@ -7,9 +7,9 @@ import random
 class Animal:
     def __init__(self, nickname, variety, atk, health_point) -> None:
         self.nickname = nickname
-        self.variety = variety
-        self.atk = atk
         self.health_point = health_point
+        self.atk = atk
+        self.__variety = variety
 
     # 更新生命中
     def update_health_point(self, price):
@@ -29,16 +29,19 @@ class Animal:
         self.update_health_point(food)
 
 
+# 狗类
 class Dog(Animal):
     def __init__(self, nickname, variety, atk, health_point) -> None:
         super().__init__(nickname, variety, atk, health_point)
 
 
+# 猫类
 class Cat(Animal):
+
     def __init__(self, nickname, variety, atk, health_point) -> None:
         super().__init__(nickname, variety, atk, health_point)
 
-    # 重写猫的减少什么在方法
+    # 重写猫的减少血量在方法
     def be_injured(self, harm):
         # 猫有概率躲避技能
         if self.run_away():
