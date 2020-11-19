@@ -50,7 +50,7 @@ if __name__ == '__main__':
     APP_ID = '22911430'
     API_KEY = 'kGehW01UFIUUHQf7ATMdPoFs'
     SECRET_KEY = 'aYBMR1TGxsymnoUe6PcYgnFIjc3tIZw2'
-    filename = 'img.png'
+    filename = 'img1.png'
     result = detection(APP_ID, API_KEY, SECRET_KEY, filename, 10)
     print(result)
     result_show(filename, result)
