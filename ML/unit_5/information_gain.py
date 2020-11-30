@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-import numpy as np
-import matplotlib.pyplot as plt
 from pylab import *
 import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
+matplotlib.use('TkAgg')
 # 特征字典，后面用到了好多次，干脆当全局变量了
 featureDic = {
     '色泽': ['浅白', '青绿', '乌黑'],
@@ -43,13 +41,6 @@ def getDataSet():
 
     features = ['色泽', '根蒂', '敲声', '纹理', '脐部', '触感', '密度', '含糖量']
 
-    # #得到特征值字典，本来用这个生成的特征字典，还是直接当全局变量方便
-    # featureDic = {}
-    # for i in range(len(features)):
-    #     featureList = [example[i] for example in dataSet]
-    #     uniqueFeature = list(set(featureList))
-    #     featureDic[features[i]] = uniqueFeature
-
     # 每种特征的属性个数
     numList = []  # [3, 3, 3, 3, 3, 2]
     for i in range(len(features) - 2):
@@ -67,8 +58,6 @@ def getDataSet():
         newData.extend(dataNum)  # 编码好的部分和原来的数值部分合并
         newDataSet.append(newData)
     return np.array(newDataSet), features
-
-
 
 
 def calEntropy(dataArr, classArr):
@@ -94,17 +83,12 @@ def calEntropy(dataArr, classArr):
 
     return ent
 
-# # test calEntropy()
-# dataSet, _ = getDataSet()
-# print(calEntropy(dataSet[:, :-1], dataSet[:, -1]))
-
 
 def splitDataSet(dataSet, ax, value):
     """
     按照给点的属性ax和其中一种取值value来划分数据。
     当属性类型为标称数据时，返回一个属性值都为value的数据集。
     当属性类型为数值型数据事，以与value的大小关系为基准返回两个数据集。
-
     input:
         dataSet: 输入数据集，形状为(m,n)表示m个数据，前n-1列个属性，最后一列为类型。
         ax：属性类型
@@ -124,19 +108,9 @@ def splitDataSet(dataSet, ax, value):
         return dataL, dataR
 
 
-# # test splitDataSet()
-# dataSet, _ = getDataSet()
-# test1 = splitDataSet(dataSet, 3, 1)
-# test2L, test2R = splitDataSet(dataSet, 6, 0.5)
-# print("test1 = ", test1)
-# print("test2L = ", test2L)
-# print("test2R = ", test2R)
-
-
 def calInfoGain(dataSet, labelList, ax, value=-1):
     """
     计算给定数据dataSet在属性ax上的香农熵增益。
-
     input：
         dataSet：输入数据集，形状为(m,n)表示m个数据，前n-1列个属性，最后一列为类型。
         labelList：属性列表，如['色泽', '根蒂', '敲声', '纹理', '脐部', '触感', '密度', '含糖量']
@@ -169,11 +143,6 @@ def calInfoGain(dataSet, labelList, ax, value=-1):
     # 计算信息增益
     gain = baseEnt - newEnt
     return gain
-
-
-# # test calInfoGain(dataSet, featureDic, axis, value=-1):
-# data, feat = getDataSet()
-# print(calInfoGain(data, feat, 2))
 
 
 def chooseBestSplit(dataSet, labelList):
@@ -217,14 +186,6 @@ def chooseBestSplit(dataSet, labelList):
     return bestFeature, bestThresh, maxGain
 
 
-# # test chooseBestSplit
-# data, feat = getDataSet()
-# f, tv, g = chooseBestSplit(data, feat)
-# print(f"best feature is {list(featureDic.keys())[f]}\n"
-#       f"best thresh value is {tv}\n"
-#       f"max information gain is {g}")
-
-
 def majorityCnt(classList):
     """
     投票，0多返回"坏瓜",否则返回"坏瓜"。
@@ -243,7 +204,6 @@ def createTree(dataSet, labels):
     input:
         labels
         dataSet
-
     return:
         myTree: 返回一个存有树的字典
     """
@@ -287,14 +247,7 @@ def createTree(dataSet, labels):
     return myTree
 
 
-# # test createTree()
-# data, feat = getDataSet()
-# Tree = createTree(data, feat)
-# print(Tree)
-
-
-# ***********************画图***********************
-# **********************start***********************
+# 画图
 # 详情参见机器学习实战决策树那一章
 
 # 定义文本框和箭头格式
@@ -383,10 +336,6 @@ def createPlot(inTree):
     plt.show()
 
 
-# ***********************画图***********************
-# ***********************end************************
-
-
 def main():
     dataSet, labelList = getDataSet()
     myTree = createTree(dataSet, labelList)
@@ -395,6 +344,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-

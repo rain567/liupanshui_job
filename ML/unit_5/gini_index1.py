@@ -1,12 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 20 15:26:09 2020
-
-@author: Administrator
-"""
-
-import numpy as np
-import matplotlib.pyplot as plt
 from pylab import *
 import operator
 import matplotlib
@@ -110,8 +102,6 @@ def createPlot(inTree):
     plotTree.yOff = 1.0
     plotTree(inTree, (0.5, 1.0), '')
     plt.show()
-# ***********************画图***********************
-# ***********************end************************
 
 
 def getDataSet():
@@ -142,29 +132,10 @@ def getDataSet():
 
     features = ['色泽', '根蒂', '敲声', '纹理', '脐部', '触感']
 
-    # #得到特征值字典，本来用这个生成的特征字典，还是直接当全局变量方便
-    # featureDic = {}
-    # for i in range(len(features)):
-    #     featureList = [example[i] for example in dataSet]
-    #     uniqueFeature = list(set(featureList))
-    #     featureDic[features[i]] = uniqueFeature
-
     # 每种特征的属性个数
     numList = []  # [3, 3, 3, 3, 3, 2]
     for i in range(len(features)):
         numList.append(len(featureDic[features[i]]))
-
-    # # 编码，把文字替换成数字。用1、2、3表示同种特征的不同类型
-    # newDataSet = []
-    # for dataVec in dataSet:  # 第一每一个数据
-    #     dataNum = dataVec[-1]  # 保存数据中类别部分
-    #     newData = []
-    #     for i in range(len(dataVec) - 1):  # 值为字符的每一列
-    #         for j in range(numList[i]):  # 对应列的特征的每一类
-    #             if dataVec[i] == featureDic[features[i]][j]:
-    #                 newData.append(j + 1)
-    #     newData.append(dataNum)  # 编码好的部分和原来的数值部分合并
-    #     newDataSet.append(newData)
 
     newDataSet = np.array(dataSet)
     # 得到训练数据集
@@ -467,16 +438,11 @@ def postPruning(dataSet, pruneSet, labels):
     return myTree
 
 
-# ***********************画图***********************
-# **********************start***********************
-# 详情参见机器学习实战决策树那一章
-
 # 定义文本框和箭头格式
 decisionNode = dict(boxstyle="sawtooth", fc="0.8")
 leafNode = dict(boxstyle="round4", fc="0.8")
 arrow_args = dict(arrowstyle="<-")
 mpl.rcParams['font.sans-serif'] = ['SimHei']  # 没有这句话汉字都是口口
-# mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 
 
 def plotMidText(cntrPt, parentPt, txtString):
@@ -557,9 +523,6 @@ def createPlot(inTree):
     plt.show()
 
 
-# ***********************画图***********************
-# ***********************end************************
-
 def main():
     dataSet, trainData, pruneData, labelList = getDataSet()
     # 用训练集训练一颗树并画图
@@ -582,6 +545,7 @@ def main():
     # 计算后剪枝精度
     print(f"post pruning tree's train accuracy = {calAccuracy(trainData, labelList, myTree)},"
           f"test accuracy = {calAccuracy(pruneData, labelList, postPTree)}\n")
+
 
 if __name__ == '__main__':
     main()

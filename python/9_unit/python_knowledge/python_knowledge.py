@@ -34,6 +34,6 @@ def learning_python_replace():
 
 
 if __name__ == '__main__':
-    # learning_python_read()
-    learning_python_replace()
+    learning_python_read()
+    # learning_python_replace()
 
