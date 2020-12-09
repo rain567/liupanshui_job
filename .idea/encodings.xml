@@ -2,5 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/AI/job_4_text/test.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/python/test_1/physical_fitness_test/体测整理.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/python/test_1/六盘水师范学院体测成绩整理表.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/python/test_1/空气质量因素.csv" charset="GBK" />
   </component>
 </project>
