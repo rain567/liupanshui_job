@@ -23,4 +23,4 @@ end_timestamp = time.time()
 when = end_timestamp - start_timestamp
 print('一百万数字相加需要 %s 秒' % when)
 
-tets[]
+# tets[]

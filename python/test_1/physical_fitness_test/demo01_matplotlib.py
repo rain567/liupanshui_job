@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 
 # 显示中文标签
 plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -10,9 +9,6 @@ plt.rcParams['axes.unicode_minus'] = False
 csv_file_name = '体测整理-清理1.csv'
 # 获取文件中的内容
 data = pd.read_csv(csv_file_name, encoding='utf-8')
-data = data.replace(np.nan, 0)
-# 项目内容
-project_text = '体重'
 
 # 年级对应
 grades = {
@@ -40,7 +36,7 @@ def add_labels(rects):
         rect.set_edgecolor('white')
 
 
-# 体重及格率柱状图分析
+# 体重及格率折线图分析
 def weight_pass_rate_plot():
     scores = []
     for grade in grade_set:
@@ -52,13 +48,13 @@ def weight_pass_rate_plot():
 
     plt.plot(grade_list, scores, linewidth=2)
     # 设置图标标题，并给坐标轴加上标签
-    plt.title("各年级{}及格人数比例".format(project_text), fontsize=24)
+    plt.title("各年级体重及格人数比例", fontsize=24)
     plt.xlabel("年级", fontsize=14)
     plt.ylabel('及格比例', fontsize=14)
     # 设置刻度标记大小
     plt.tick_params(axis='both', labelsize=10)
     # 保存图表，最后结果
-    plt.savefig('各年级{}及格人数比例折线图.png'.format(project_text), bbox_inches='tight')
+    plt.savefig('各年级体重及格人数比例折线图.png', bbox_inches='tight')
     # 显示图片，调试时使用
     plt.show()
 
@@ -74,17 +70,17 @@ def weight_mean_bar():
     bar = plt.bar(grade_list, scores, linewidth=2)
     add_labels(bar)
     # 设置图标标题，并给坐标轴加上标签
-    plt.title("各年级{}指数平均数".format(project_text), fontsize=24)
+    plt.title("各年级体重指数平均数", fontsize=24)
     plt.xlabel("年级", fontsize=14)
     plt.ylabel('体重指数平均数', fontsize=14)
     # 保存图表，最后结果
-    plt.savefig('各年级{}指数平均数柱状图.png'.format(project_text), bbox_inches='tight')
+    plt.savefig('各年级体重指数平均数柱状图.png', bbox_inches='tight')
     # 显示图片，调试时使用
     plt.show()
 
 
 if __name__ == '__main__':
     # 及格率折线图
-    # weight_pass_rate_plot()
+    weight_pass_rate_plot()
     # 柱状图
     weight_mean_bar()
