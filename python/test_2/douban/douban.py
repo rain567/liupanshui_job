@@ -4,11 +4,9 @@ from urllib.parse import quote
 import json
 import time
 import random
+import re
 import pandas as pd
-
-# 爬取的类型
-tags = '电影'
-
+from bs4 import BeautifulSoup
 
 def get_html(url):
     headers = {
@@ -26,29 +24,35 @@ def main():
     crawling_time = 5
     # 返回列表
     list_response = []
-    while True:
-        # 地址
-        url = 'https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags={}&start={}'\
-            .format(quote(tags), index * 20)
-        # 请求并获取返回值
-        info = get_html(url)
-        data = json.loads(info.decode())['data']
-        # 将内容加入到返回列表中
-        list_response.extend(data)
-        for item in data:
-            print('电影：{}，评分：{}'.format(item['title'], item['rate']))
-        # 判断次数达到或者全部爬取完之后返回
-        if len(data) < 20 or index == crawling_time:
-            print('爬取完成,共爬取{}条数据,爬取{}次'.format(len(list_response), index))
-            return list_response
-        index += 1
-        # 爬取之后随便等待秒数，防止被程序识别。爬取次数多时请使用
-        # time.sleep(random.randint(0, 2))
+    # 地址
+    url = 'https://movie.douban.com/chart'
+    # 请求并获取返回值
+    info = get_html(url).decode()
+    # info = info.replace('<span style="font-size:13px;">', '')
+    # info = info.replace('</span>', '')
+    # match = re.findall('<a.*>(.*?)</a>', info)
+    # print(match)
+    soup = BeautifulSoup(info, 'lxml')
+    for sibling in soup.find_all('div', class_='pl2'):
+        data = {}
+        title = ""
+        for string in sibling.a.stripped_strings:
+            string = string.replace(' ', '')
+            string = string.replace('\n', '')
+            title += string
+        print('电影标题：' + title, end='')
+        data['标题'] = title
+        for span in sibling.find_all('span', class_='rating_nums'):
+            data['评分'] = span.string
+        for p in sibling.find_all('p', class_='pl'):
+            data['详情'] = p.string
+        list_response.append(data)
+    return list_response
 
 
 def save_file(data):
     # 保存数据集
-    pd.DataFrame(data).to_csv(tags + '.csv')
+    pd.DataFrame(data).to_csv('豆瓣新片排行榜.csv')
 
 
 if __name__ == '__main__':
