@@ -1,12 +1,8 @@
 from urllib.request import Request, urlopen
 from fake_useragent import UserAgent
-from urllib.parse import quote
-import json
-import time
-import random
-import re
 import pandas as pd
 from bs4 import BeautifulSoup
+
 
 def get_html(url):
     headers = {
@@ -18,20 +14,12 @@ def get_html(url):
 
 
 def main():
-    # 爬取页数
-    index = 0
-    # 爬取次数
-    crawling_time = 5
     # 返回列表
     list_response = []
     # 地址
     url = 'https://movie.douban.com/chart'
     # 请求并获取返回值
     info = get_html(url).decode()
-    # info = info.replace('<span style="font-size:13px;">', '')
-    # info = info.replace('</span>', '')
-    # match = re.findall('<a.*>(.*?)</a>', info)
-    # print(match)
     soup = BeautifulSoup(info, 'lxml')
     for sibling in soup.find_all('div', class_='pl2'):
         data = {}
@@ -52,7 +40,7 @@ def main():
 
 def save_file(data):
     # 保存数据集
-    pd.DataFrame(data).to_csv('豆瓣新片排行榜.csv')
+    pd.DataFrame(data).to_csv('豆瓣新片排行榜1.csv')
 
 
 if __name__ == '__main__':

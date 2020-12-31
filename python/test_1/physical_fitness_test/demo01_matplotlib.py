@@ -83,4 +83,4 @@ if __name__ == '__main__':
     # 及格率折线图
     weight_pass_rate_plot()
     # 柱状图
-    weight_mean_bar()
+    # weight_mean_bar()
