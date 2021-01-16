@@ -8,7 +8,7 @@ SECRET_KEY = 'mBbpvR3tA7wm561dtmchP5MMjPsVnGt4'
 
 client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
 
-result = client.synthesis('你好百度', 'zh', 1, {
+result = client.synthesis('test', 'zh', 1, {
     'vol': 5,
 })
 # 识别正确返回语音二进制 错误则返回dict 参照下面错误码
